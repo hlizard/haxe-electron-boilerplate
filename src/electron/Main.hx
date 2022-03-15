@@ -5,6 +5,7 @@ import js.Node;
 import js.Node.__dirname;
 import electron.main.App;
 import electron.main.BrowserWindow;
+import electron.main.Menu;
 
 class Main {
 
@@ -21,6 +22,8 @@ class Main {
                 closable: true,
 				webPreferences: {
                     nodeIntegration: true,
+					// devTools: true,
+					enableRemoteModule: true,
                     defaultFontFamily: {
                         standard: 'Roboto'
                     },
@@ -31,13 +34,13 @@ class Main {
 				mainWindow = null;
 			});
 
-			mainWindow.setMenuBarVisibility(false);
+			mainWindow.setMenuBarVisibility(true);
 
-			mainWindow.setResizable(false);
+			mainWindow.setResizable(true);
 			
 			mainWindow.loadFile('./src/pages/app/app.html');
 
-			// win.webContents.openDevTools();
+			mainWindow.webContents.openDevTools();
 		});
 
 		electron.main.App.on( window_all_closed, function(e) {

@@ -12,12 +12,14 @@ button.addEventListener('click', function() {
     frame: true,
     webPreferences: {
       nodeIntegration: true,
+      enableRemoteModule: true
     },
   });
+  modal.webContents.openDevTools();
 
   modal.setMenuBarVisibility(false);
 
-  modal.setResizable(false);
+  modal.setResizable(true);
 
   modal.loadFile('./src/pages/modal/modal.html');
 
